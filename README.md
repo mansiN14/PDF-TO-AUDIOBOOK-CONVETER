@@ -8,8 +8,7 @@ This web application allows users to convert PDF documents into audiobooks. It u
 
 - **PDF to Audiobook Conversion**: Convert PDF documents into audiobooks with ease.
 - **User-friendly Interface**: A clean and intuitive web interface for a seamless user experience.
-- **Customizable Settings**: Adjust audio settings such as voice, speed, and language to tailor the audiobook to your preferences.
-- **Responsive Design**: Access the web app from various devices with a responsive and adaptable design.
+
 
 ## Requirements
 
