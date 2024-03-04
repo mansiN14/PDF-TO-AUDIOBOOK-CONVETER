@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="row">
+        <div class="col-sm">
+            <div class="content text-center">
+                <h1>PDF to Audio Book Converter</h1>
+
+                {% if audio_url %}
+                    <!-- Success message and audio player -->
+                    <div class="alert alert-success" role="alert">
+                        Audio book generated successfully!
+                    </div>
+                    <audio controls class="mb-3">
+                        <source src="{{ audio_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <p><a class="btn btn-primary" href="{{ audio_url }}" download>Download Audio</a></p>
+                {% else %}
+                    <!-- File upload form -->
+                    <form method="post" enctype="multipart/form-data" action="/convert" id="convertForm">
+                        <input type="file" name="file" id="uploadbtn" style="display: none;" accept=".pdf" required>
+                        <label class="btn btn-primary" for="uploadbtn">Click Here to Upload PDF</label>
+                        <button class="btn btn-success" type="submit" id="convertBtn">Convert to Audio</button>
+                    </form>
+
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="spinner-border text-primary my-3" role="status" style="display: none;">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <!-- Placeholder for error message if needed -->
+                    <p id="errorMessage" style="color: red;"></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to show/hide loader -->
+<script>
+    document.getElementById('convertBtn').addEventListener('click', function () {
+        // Show the loading spinner
+        document.getElementById('loadingSpinner').style.display = 'inline-block';
+    });
+</script>
+
+{% endblock container %}
